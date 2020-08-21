@@ -1,0 +1,12 @@
+<h2 class="text-muted">
+  <% if @lists.any? %>
+    <%= pluralize(@lists.count, 'Resultado' ) %>  encontrados:
+  <% else %>
+    Nenhum resultado encontrado
+  <% end %>
+</h2>
+
+
+<% @lists.each do |list| %>
+  <%= render(list) %>
+<% end %>
