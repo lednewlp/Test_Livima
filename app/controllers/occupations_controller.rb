@@ -28,7 +28,7 @@ class OccupationsController < ApplicationController
 
     respond_to do |format|
       if @occupation.save
-        format.html { redirect_to @occupation, notice: 'Occupation was successfully created.' }
+        format.html { redirect_to @occupation, notice: 'Cargo criado com sucesso.' }
         format.json { render :show, status: :created, location: @occupation }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class OccupationsController < ApplicationController
   def update
     respond_to do |format|
       if @occupation.update(occupation_params)
-        format.html { redirect_to @occupation, notice: 'Occupation was successfully updated.' }
+        format.html { redirect_to @occupation, notice: 'Cargo atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @occupation }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class OccupationsController < ApplicationController
   def destroy
     @occupation.destroy
     respond_to do |format|
-      format.html { redirect_to occupations_url, notice: 'Occupation was successfully destroyed.' }
+      format.html { redirect_to occupations_url, notice: 'Cargo deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
