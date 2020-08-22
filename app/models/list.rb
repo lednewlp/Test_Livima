@@ -1,4 +1,7 @@
 class List < ApplicationRecord
+  # relations
+  belongs_to :occupation
+
   # extensoes
   include PgSearch
   extend FriendlyId
