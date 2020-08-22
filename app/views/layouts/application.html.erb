@@ -7,22 +7,28 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   </head>
 
   <body>
-    <div class="bg-dark text-white text-center mb-4 p-4">
-      <%= link_to root_path, class: 'text-white' do %>
-        <h1 class='display-6'>Adm Livima Test</h1>
-      <% end %>
-      <% if admin_signed_in? %>
-        <div class="text-right">
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-transparent text-white' do  %>
-            <h3>Log Out</h3>
-          <% end %>
-        </div>
-      <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
 
-    </div>
+        <%= link_to root_path, class: 'text-white' do %>
+          <h3 class='title'>Adm Livima Test</h3>
+        <% end %>
+        <% if admin_signed_in? %>
+          <div class="text-right">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-danger btn-sm text-white' do  %>
+              <h4>Log Out</h4>
+            <% end %>
+      </div>
+        <% end %>
+
+      </div>
+    </nav>
     <div class="container">
       <% flash.each do |type, message| %>
       <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
@@ -36,12 +42,12 @@
       <%if admin_signed_in? %>
         <div class="row">
           <div class="col-4 offset-8">
-            <div class="search">
+            <div class="search mt-4">
               <%= form_with url: search_lists_path, method: :get, local: true, class: 'form-inline' do |form| %>
                 <div class="form-group mx-3 mb-3">
                   <%= form.search_field :q, class: 'form-control', required: true, placeholder: 'Busca', value: params[:q] %>
                 </div>
-                <%= form.submit 'Buscar', class: 'btn btn-primary mb-3', data: {disable_with: 'Buscando...'} %>
+                <%= form.submit 'Buscar', class: 'btn btn-secondary mb-3', data: {disable_with: 'Buscando...'} %>
               <% end %>
             </div>
           </div>

@@ -1,7 +1,7 @@
 class List < ApplicationRecord
   # relations
   belongs_to :occupation
-
+  
   # extensoes
   include PgSearch
   extend FriendlyId
@@ -11,19 +11,21 @@ class List < ApplicationRecord
   after_destroy :destroy_nofity
 
   friendly_id :name, use: :slugged
-  pg_search_scope :search, against: %i[name occupation_id]
+  pg_search_scope :search,
+   against: %i[name occupation_id],
+   associated_against: { occupation: %i[description]}
 
   # validations
   validates :name, :email, :occupation_id, :salario, presence: true
   validate :email, if: -> { email_is_valid? }
 
   def create_notify
-    notify_slack("🎉 New user: #{email} 🎉")
+    notify_slack("🎉 Novo funcionário: #{name} 🎉")
   end
 
   def destroy_nofity
     # use username or email, see in config/initializer/slack_notiifer.rb
-    notify_slack("❌ User @#{email} deletado")
+    notify_slack("❌ Funcionário @#{name} removido")
   end
 
   def notify_slack(msg)

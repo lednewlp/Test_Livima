@@ -1,9 +1,11 @@
 <div class="card bg-light mb-2">
   <div class="card-body">
     <h4><%= link_to list.name, list %></h4>
-
+    <div class='text-muted mb-2'>
+      <em> <%= list.occupation.description %></em>
+    </div>
     <div class="text-right">
-      <%= link_to 'Ver Funcionario', list, class: 'btn btn-success' %>
+      <%= link_to 'Ver Funcionário', list, class: 'btn btn-success' %>
       <%= link_to 'Editar', edit_list_path(list), class: 'btn btn-warning' %>
       <%= link_to 'Apagar', list, method: :delete, class: 'btn btn-danger',
         data: { confirm: ' Voce tem certeza que deseja deletar o funcionario?'} %>

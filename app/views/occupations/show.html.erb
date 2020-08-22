@@ -1,9 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="shadow p-5 bg-light rounded">
+  <div class="text-center mb-5">
 
-<p>
-  <strong>Description:</strong>
-  <%= @occupation.description %>
-</p>
+  <h3><strong>Description:</strong></h3>
+    <h4><%= @occupation.description %></h4>
+  </div>
 
-<%= link_to 'Edit', edit_occupation_path(@occupation) %> |
-<%= link_to 'Back', occupations_path %>
+
+    <div class="text-center ">
+
+      <%= link_to 'Edit', edit_occupation_path(@occupation), class: 'btn btn-warning' %>
+      <%= link_to 'Voltar', root_path, class: 'btn btn-success' %>
+    </div>
+
+
+
+
+</div>
